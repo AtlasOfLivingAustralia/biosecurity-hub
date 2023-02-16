@@ -1,0 +1,126 @@
+@use "variables" as *;
+@use "sass:math";
+
+@mixin center($position) {
+  position: absolute;
+
+  @if $position == "y" {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $position == "x" {
+    left: 50%;
+    transform: translate(-50%);
+  } @else if $position == "xy" {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@mixin flex($wrap: nowrap, $important: null) {
+  display: flex $important;
+
+  @if $wrap != wrap {
+    flex-wrap: nowrap $important;
+  } @else {
+    flex-wrap: wrap $important;
+  }
+}
+
+@mixin flex-between($wrap: nowrap, $important: null) {
+  @include flex($wrap, $important);
+
+  justify-content: space-between $important;
+
+  &::before,
+  &::after {
+    content: none $important;
+  }
+}
+
+@mixin flex-around($wrap: nowrap, $important: null) {
+  @include flex($wrap, $important);
+
+  justify-content: space-around $important;
+
+  &::before,
+  &::after {
+    content: none $important;
+  }
+}
+
+@mixin flex-even($wrap: nowrap, $important: null) {
+  @include flex($wrap, $important);
+
+  justify-content: space-evenly $important;
+
+  &::before,
+  &::after {
+    content: none $important;
+  }
+}
+
+@mixin flex-between-center($wrap: nowrap, $important: null) {
+  @include flex-between($wrap, $important);
+
+  align-items: center $important;
+}
+
+@mixin flex-around-center($wrap: nowrap, $important: null) {
+  @include flex-around($wrap, $important);
+
+  align-items: center $important;
+}
+
+@mixin flex-even-center($wrap: nowrap, $important: null) {
+  @include flex-even($wrap, $important);
+
+  align-items: center $important;
+}
+
+@mixin flex-center-x($wrap: nowrap, $important: null) {
+  @include flex($wrap, $important);
+
+  justify-content: center $important;
+}
+
+@mixin flex-center-y($wrap: nowrap, $important: null) {
+  @include flex($wrap, $important);
+
+  align-items: center $important;
+}
+
+@mixin flex-center-center($wrap: nowrap, $important: null) {
+  @include flex($wrap, $important);
+
+  align-items: center $important;
+  justify-content: center $important;
+}
+
+@function strip-unit($value) {
+  @return math.div($value, $value * 0 + 1);
+}
+
+@mixin fluid-type(
+  $min-font-size,
+  $max-font-size,
+  $min-vw: $min-content-width,
+  $max-vw: $max-content-width
+) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    font-size: clamp(
+      $min-font-size,
+      calc(
+        #{$min-font-size} +
+          #{strip-unit($max-font-size - $min-font-size)} *
+          ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+      ),
+      $max-font-size
+    );
+  }
+}

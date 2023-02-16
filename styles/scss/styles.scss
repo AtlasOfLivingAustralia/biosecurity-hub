@@ -1,0 +1,630 @@
+/*!
+ Theme Name:   ALA Biosecurity Hub
+ Description:  Theme for ALA Biosecurity Hub
+ Author:       Ares Yang
+ Author URI:   https://transitgraphics.com.au/
+ Version:      1.0
+*/
+
+/* =======================================================================
+   Global
+======================================================================= */
+
+@use "modules/include-media" as *;
+@use "modules/variables" as *;
+@use "modules/mixin" as *;
+
+%grid-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1170px;
+  padding: 0 30px;
+}
+
+%full-width {
+  margin-left: calc(var(--vw, 1vw) * -100 / 2 + 100% / 2);
+  margin-right: calc(var(--vw, 1vw) * -100 / 2 + 100% / 2);
+  max-width: calc(var(--vw, 1vw) * 100);
+  width: calc(var(--vw, 1vw) * 100);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: 2.625rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+p {
+  margin-top: 0;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px !important;
+  overflow: hidden;
+  padding: 0 !important;
+  position: absolute !important;
+  white-space: nowrap;
+  width: 1px !important;
+}
+
+.hub {
+  @extend %grid-container;
+
+  font-family: Roboto, sans-serif;
+  line-height: 1.5;
+
+  /* =======================================================================
+      Header
+   ======================================================================= */
+
+  &-header {
+    @extend %full-width;
+
+    background: url("../images/invasive species/Myrtle Rust (Austropuccinia psidii) Photo Credit Pete Woodall CC BY NC.jpeg")
+      center left/cover no-repeat;
+    padding: 150px 0 250px;
+
+    &__container {
+      @extend %grid-container;
+    }
+
+    &__title,
+    &__text {
+      color: $white;
+      margin-right: auto;
+      max-width: 425px;
+    }
+
+    &__title {
+      margin-bottom: 40px;
+    }
+
+    &__text {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* =======================================================================
+      Intro
+   ======================================================================= */
+
+  &-intro {
+    margin-top: -120px;
+    padding: $section-padding;
+
+    &__container {
+      @include flex-between-center;
+
+      margin-bottom: 30px;
+    }
+
+    &__map {
+      flex: 2 1 0;
+      margin: 0;
+
+      &-caption {
+        border-bottom: 1px solid $black;
+        display: inline-block;
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.2;
+        padding-bottom: 30px;
+
+        &-link {
+          color: $red;
+
+          &:hover,
+          &:focus {
+            color: $red--dark;
+          }
+        }
+      }
+    }
+
+    &__content {
+      flex: 1.5 1 0;
+
+      &-text {
+        color: $grey;
+
+        &--highlight {
+          color: $red--dark;
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    &__footer {
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    &__ibra {
+      font-family: Lato, sans-serif;
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      margin-top: 0;
+    }
+  }
+
+  /* =======================================================================
+      Invasive species
+   ======================================================================= */
+
+  &-invasive {
+    @extend %full-width;
+
+    background: url("../images/bg-pattern.png") center/cover no-repeat,
+      $grey--light;
+    padding: $section-padding--wide;
+    padding-top: 120px;
+
+    &__container {
+      @extend %grid-container;
+    }
+
+    &__heading {
+      color: $white;
+      margin-bottom: 40px;
+    }
+
+    .slick {
+      &-slider {
+        padding: 0 20px;
+      }
+
+      &-track {
+        @include flex-center-center;
+      }
+
+      &-next {
+        right: 0;
+      }
+
+      &-prev {
+        left: 0;
+      }
+    }
+
+    &__species {
+      flex: 1 1 0;
+      margin: 0 20px;
+
+      &-fig {
+        box-shadow: 0 5px 20px 0 rgb(0 0 0 / 20%);
+        margin: 0;
+        padding-top: 80%;
+        position: relative;
+
+        &:hover,
+        &:focus {
+          &::after {
+            opacity: 0.8;
+          }
+        }
+
+        &::before {
+          background: linear-gradient(
+            to bottom,
+            rgb(0 0 0 / 0%) 0,
+            rgb(0 0 0 / 50%) 100%
+          );
+          bottom: 0;
+          content: "";
+          display: block;
+          height: 30%;
+          left: 0;
+          position: absolute;
+          width: 100%;
+          z-index: 1;
+        }
+
+        &::after {
+          background-color: $red;
+          content: "";
+          display: block;
+          height: 100%;
+          left: 0;
+          opacity: 0;
+          position: absolute;
+          top: 0;
+          transition: opacity 0.3s;
+          width: 100%;
+        }
+      }
+
+      &-img {
+        display: block;
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      &-figcaption {
+        bottom: 10px;
+        color: #fff;
+        display: block;
+        font-size: 0.9em;
+        line-height: 1.2;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+        z-index: 5;
+      }
+    }
+  }
+
+  /* =======================================================================
+      Query
+   ======================================================================= */
+
+  &-query {
+    @extend %full-width;
+
+    background-color: $black;
+    padding: $section-padding--narrow;
+
+    &__container {
+      @extend %grid-container;
+      @include flex-center-center(wrap);
+
+      gap: 40px;
+    }
+
+    &__heading {
+      color: $white;
+      flex: 0 1 content;
+      margin-bottom: 0;
+    }
+
+    &__form {
+      @include flex-center-center;
+
+      flex: 1 1 0;
+      margin-bottom: 0;
+      max-width: 450px;
+
+      &-group {
+        flex: 1 1 0;
+      }
+
+      &-control {
+        border: unset;
+        height: 40px;
+        padding: 0 30px;
+        width: 100%;
+
+        &:focus-visible {
+          outline-color: $red;
+        }
+
+        &::placeholder {
+          color: $grey--light;
+        }
+      }
+
+      &-btn {
+        @include flex-center-center;
+
+        background-color: $red;
+        border: unset;
+        color: $white;
+        cursor: pointer;
+        gap: 5px;
+        height: 40px;
+        padding-left: 22px;
+        padding-right: 22px;
+        transition: background-color 0.3s;
+
+        &:hover,
+        &:focus {
+          background-color: $red--dark;
+        }
+      }
+    }
+  }
+
+  /* =======================================================================
+      Tools
+   ======================================================================= */
+
+  &-tools {
+    &__tabs {
+      @extend %full-width;
+
+      background-color: $red;
+      padding: $section-padding;
+      padding-bottom: 0;
+
+      &-container {
+        @extend %grid-container;
+
+        display: flex;
+        gap: 15px;
+      }
+    }
+
+    &__heading {
+      @include flex-center-center;
+
+      color: $white;
+      flex: 0 0 content;
+      margin-bottom: 0;
+    }
+
+    &__tab {
+      @include flex-center-center;
+
+      background-color: $red--light;
+      cursor: pointer;
+      flex: 0 1 content;
+      font-size: 1rem;
+      font-weight: 400;
+      margin-bottom: 0;
+      padding: 10px 30px;
+      text-align: center;
+      transition: background-color 0.3s;
+
+      &:hover,
+      &:focus {
+        background-color: $white;
+      }
+
+      &--active {
+        background-color: $white;
+      }
+    }
+
+    &__content {
+      display: none;
+      padding: $section-padding;
+
+      &-container {
+        @include flex-between(wrap);
+
+        gap: 40px;
+      }
+
+      &-fig {
+        flex: 0 1 content;
+        margin: 0;
+        max-width: 350px;
+
+        &--map {
+          max-width: 450px;
+        }
+      }
+
+      &-figlink {
+        color: $black;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover,
+        &:focus {
+          color: $red;
+        }
+      }
+
+      &-figcaption {
+        font-size: 0.9em;
+        font-weight: 300;
+        line-height: 1.2;
+        margin-top: 10px;
+        text-align: center;
+      }
+
+      &-text {
+        flex: 1 1 0;
+        font-size: 1em;
+      }
+
+      &-logos {
+        @include flex-between-center(wrap);
+
+        flex: 1 1 100%;
+        gap: 20px;
+      }
+
+      &-logo {
+        flex: 0 1 content;
+        margin: 0;
+
+        &-img {
+          height: auto;
+          max-height: 130px;
+          max-width: 180px;
+          object-fit: contain;
+          width: 100%;
+        }
+      }
+
+      &-link {
+        color: $red;
+        transition: color 0.3s;
+
+        &:hover,
+        &:focus {
+          color: $red--dark;
+        }
+      }
+    }
+  }
+
+  /* =======================================================================
+      Sponsors
+   ======================================================================= */
+
+  &-sponsors {
+    @extend %full-width;
+
+    background-color: $grey--lighter;
+    padding: $section-padding;
+
+    &__container {
+      @extend %grid-container;
+    }
+
+    &__logos {
+      flex: 1 1 0;
+      margin-bottom: 20px;
+
+      &-row {
+        @include flex-between(wrap);
+
+        padding: 10px 0;
+
+        &:not(:last-child) {
+          border-bottom: 1px solid $black;
+        }
+      }
+    }
+
+    &__logo {
+      @include flex-center-center;
+
+      cursor: pointer;
+      flex: 1 1 content;
+      margin: 0;
+      padding: 0 10px;
+
+      &--disabled {
+        cursor: auto;
+      }
+
+      &--separator {
+        border-left: 1px solid $black;
+      }
+
+      &-img {
+        height: auto;
+        max-height: 50px;
+        max-width: 100px;
+        object-fit: contain;
+        width: 100%;
+      }
+    }
+
+    &__content {
+      margin: auto;
+      max-width: 880px;
+      position: relative;
+
+      &-map {
+        margin: 0;
+      }
+
+      &-text {
+        color: $white;
+        font-size: 0.9em;
+        height: 37%;
+        justify-content: left;
+        left: 52%;
+        padding: 0 10%;
+        position: absolute;
+        text-align: left;
+        top: 45%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+
+        &::before {
+          content: "";
+          display: block;
+          float: left;
+          height: 100%;
+          shape-outside: polygon(0 0, 48% 0, 0 30%, 20% 100%, 0 100%);
+        }
+
+        &-container {
+          display: none;
+
+          &::before {
+            content: "";
+            display: block;
+            float: right;
+            height: 100%;
+            shape-outside: polygon(
+              100% 0,
+              100% 100%,
+              90% 100%,
+              100% 30%,
+              58% 0
+            );
+            width: 50%;
+          }
+        }
+      }
+
+      &-link {
+        color: $white;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $red--light;
+        }
+      }
+    }
+  }
+
+  /* =======================================================================
+      Contact
+   ======================================================================= */
+
+  &-contact {
+    @extend %full-width;
+
+    background-color: $grey--light;
+    padding: $section-padding--narrow;
+
+    &__container {
+      @extend %grid-container;
+    }
+
+    &__text {
+      color: $white;
+      font-size: 1.2rem;
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    &__link {
+      color: $white;
+      transition: color 0.3s;
+
+      &:hover,
+      &:focus {
+        color: $red;
+      }
+    }
+  }
+}

@@ -1,0 +1,21 @@
+$red: #c44d34;
+$red--dark: #883524;
+$red--light: #e9bcb1;
+$white: #fff;
+$black: #212121;
+$grey: #565656;
+$grey--light: #647073;
+$grey--lighter: #efefef;
+$transparent: #fff0;
+
+$section-padding: 60px 0;
+$section-padding--narrow: 30px 0;
+$section-padding--wide: 160px 0;
+
+$breakpoints: (
+  phone: 600px,
+  tablet: 768px,
+  desktop: 1024px,
+  contained-width: 1170px,
+  large-device: 1440px,
+);
