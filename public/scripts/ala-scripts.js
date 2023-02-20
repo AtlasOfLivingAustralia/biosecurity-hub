@@ -40,11 +40,6 @@
      */
     $('[data-toggle="tooltip"]').tooltip();
 
-    $('[data-sticky]').stickybits({
-      useStickyClasses: true,
-      stickyBitStickyOffset: 20
-    });
-
     if($('#anchorList').length) {
       $('body').scrollspy({ target: '#anchorList' });
     }
