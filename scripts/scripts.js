@@ -1,6 +1,5 @@
 
-// to compile:  npx babel -w scripts/scripts.js  --out-dir scripts/ --presets=@babel/preset-env --source-maps --out-file-extension .compiled.js
-// then copy scripts.compiled.js into public/scripts
+// to compile (and watch): npx babel -w scripts/scripts.js  --out-dir public/scripts/ --presets=@babel/preset-env --source-maps --out-file-extension .compiled.js
 
 jQuery(document).ready(function ($) {
 
@@ -179,8 +178,7 @@ jQuery(document).ready(function ($) {
     "click",
     ".hub-tools__tab:not(.hub-tools__tab--active)",
     (e) => {
-      console.log('Tab clicked');
-      console.log('About to deactivate previous tab');
+      console.log('Tab clicked. About to deactivate previous tab');
       $(".hub-tools__tab--active").removeClass("hub-tools__tab--active");
       console.log('About to deactivate previous content pane');
       $(".hub-tools__content--active")
