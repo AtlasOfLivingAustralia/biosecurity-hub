@@ -209,14 +209,14 @@ jQuery(document).ready(function ($) {
     ".hub-sponsors__logo:not(.hub-sponsors__logo--disabled)",
     (e) => {
       const newSponsor = $(e.currentTarget).data("sponsor");
-      console.log('newSponsor:' + newSponsor);
+      //console.log('newSponsor:' + newSponsor);
       const currentSponsor = $(
         ".hub-sponsors__content-text-container--active"
       ).data("sponsor");
-      console.log('currentSponsor:' + currentSponsor);
+      //console.log('currentSponsor:' + currentSponsor);
 
       if (newSponsor !== currentSponsor) {
-        console.log('newSponsor !== currentSponsor');
+        //console.log('newSponsor !== currentSponsor');
         $(".hub-sponsors__content-text-container--active")
           .removeClass("hub-sponsors__content-text-container--active")
           .fadeOut(200, () => {
@@ -225,7 +225,7 @@ jQuery(document).ready(function ($) {
             )
               .addClass("hub-sponsors__content-text-container--active")
               .fadeIn(200);
-              console.log('activating newSponsor content');
+              //console.log('activating newSponsor content');
           });
       }
     }
