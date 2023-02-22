@@ -178,14 +178,16 @@ jQuery(document).ready(function ($) {
     "click",
     ".hub-tools__tab:not(.hub-tools__tab--active)",
     (e) => {
-      console.log('Tab clicked. About to deactivate previous tab');
+      const currentTab = e.currentTarget;
+      console.log('currentTab:' + currentTab);
+      const tool = $(currentTab).data("tool");
+      console.log('tool (currentTab data):' + tool);
+      console.log('About to deactivate previous tab.');
       $(".hub-tools__tab--active").removeClass("hub-tools__tab--active");
       console.log('About to deactivate previous content pane');
       $(".hub-tools__content--active")
         .removeClass("hub-tools__content--active")
         .fadeOut(200, () => {
-          const currentTab = e.currentTarget;
-          const tool = $(currentTab).data("tool");
           console.log('About to activate tab: '+ tool);
           $(`.hub-tools__tab[data-tool='${tool}']`).addClass(
             "hub-tools__tab--active"
