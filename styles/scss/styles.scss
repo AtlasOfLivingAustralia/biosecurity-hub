@@ -10,6 +10,8 @@
    Global
 ======================================================================= */
 
+// to compile on save: sass --watch --style=compressed styles/scss:styles// 
+
 @use "modules/include-media" as *;
 @use "modules/variables" as *;
 @use "modules/mixin" as *;
