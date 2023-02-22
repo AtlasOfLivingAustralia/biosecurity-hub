@@ -1,6 +1,7 @@
 "use strict";
 
 // to compile:  npx babel -w scripts/scripts.js  --out-dir scripts/ --presets=@babel/preset-env --source-maps --out-file-extension .compiled.js
+// then copy scripts.compiled.js into public/scripts
 
 jQuery(document).ready(function ($) {
   /* ALA scripts 
@@ -152,11 +153,17 @@ jQuery(document).ready(function ($) {
   ========================================================================== */
 
   $(document).on("click", ".hub-tools__tab:not(.hub-tools__tab--active)", function (e) {
+    console.log('Tab clicked');
+    console.log('About to deactivate previous tab');
     $(".hub-tools__tab--active").removeClass("hub-tools__tab--active");
+    console.log('About to deactivate previous content pane');
     $(".hub-tools__content--active").removeClass("hub-tools__content--active").fadeOut(200, function () {
       var currentTab = e.currentTarget;
       var tool = $(currentTab).data("tool");
+      console.log('About to activate tab: ${tool}');
       $(".hub-tools__tab[data-tool='".concat(tool, "']")).addClass("hub-tools__tab--active");
+      console.log('About to activate content pane: ${tool}');
+      console.log('Click on tab: ${tool}');
       $(".hub-tools__content[data-tool='".concat(tool, "']")).addClass("hub-tools__content--active").fadeIn(200);
     });
   });
