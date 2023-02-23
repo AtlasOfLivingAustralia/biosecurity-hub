@@ -10,7 +10,7 @@
    Global
 ======================================================================= */
 
-// to compile on save: sass --watch --style=compressed styles/scss:styles// 
+// to compile on save: sass --watch --style=compressed styles/scss:public/styles// 
 
 @use "modules/include-media" as *;
 @use "modules/variables" as *;
@@ -555,7 +555,7 @@ p {
         padding: 0 10%;
         position: absolute;
         text-align: left;
-        top: 45%;
+        top: 50%;
         transform: translate(-50%, -50%);
         width: 100%;
 
