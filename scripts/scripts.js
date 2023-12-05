@@ -22,10 +22,10 @@ jQuery(document).ready(function ($) {
   /**
    * Display login/logout buttons (ES6)
    */
-  var alaJSAuthCookieName='ALA-js-auth';
+  var alaJSAuthCookieName='ALA-Auth-Test';
   var alaJSAuthCookieValue = readCookie(alaJSAuthCookieName);
   // console.log('Cookie '+alaJSAuthCookieName+' cookie has value '+alaJSAuthCookieValue);
-  if (alaJSAuthCookieValue == 'loggedin'){
+  if (alaJSAuthCookieValue != null){
     $('.ala-auth-buttons-logged-in').removeClass("d-none");
     $('.ala-auth-buttons-logged-out').addClass("d-none");
   } else {
